@@ -1,0 +1,85 @@
+<div class="login-wrap">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6 col-lg-7 col-xl-8 bg-img d-none d-sm-none d-md-flex">
+        <div class="bg-text-wrap">
+          <h1 class="hero-text">
+            Lorem Ipsum is<br />
+            simply dummy
+          </h1>
+          <p class="hero-description">
+            Lorem Ipsum is simply dummy text of the<br />
+            printing and typesetting industry.
+          </p>
+          <div class="btn-wrap">
+            <button class="btn no-radius btn-fill-white">Learn More</button>
+            <button class="btn no-radius btn-outline-white btn-fill-hover ml-3">
+              Our Features
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-5 col-xl-4 bg-color-13">
+        <div class="form-section">
+          <div class="form-section-head">
+            <h2>Login</h2>
+            <!-- <p>Lorem Ipsum has been the industry</p> -->
+          </div>
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <fieldset>
+            <div class="form-group">
+              <input
+                type="email"
+                formControlName="email"
+                name="email"
+                class="form-control"
+                placeholder="Email Address"
+                required
+              />
+              <app-field-error
+              class="float-left"
+              [displayMessage]="hasError('email', 'required')"
+              message="Email is required"
+            ></app-field-error>
+
+            <app-field-error
+              class="float-left"
+              [displayMessage]="hasError('email', 'email')"
+              message="Enter correct email"
+            ></app-field-error>
+            </div>
+            
+
+            <div class="form-group mt-3">
+              <input
+                type="password"
+                formControlName="password"
+                class="form-control"
+                placeholder="Password"
+                required
+              />
+              <app-field-error
+              class="float-left"
+              [displayMessage]="hasError('password', 'required')"
+              message="Password is required"
+            ></app-field-error>
+            </div>
+        </fieldset>
+
+            <div class="d-flex mt-3">
+              <button class="btn btn-block gradient-btn" type="submit">
+                Login
+              </button>
+            </div>
+            <div class="text-center mt-3">
+              <span class="fs-13"
+                >Doesn't have an account yet?
+                <a class="c-blue fw-600">Sign up</a></span
+              >
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+.product {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-bottom-width: 1px;
+    border-bottom-color: #EBEBEB;
+    border-bottom-style: solid;
+}
+.description {
+    flex: 1;
+}
+.category-name {
+    font-size: 12px;
+}
+.employee-name {
+    font-size: 14px;
+    font-weight: normal;
+}
+.product-name, .price {
+    height: auto;
+    font-weight: bold;
+}
+.product {
+    padding: 12px;
+}
