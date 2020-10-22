@@ -12,6 +12,11 @@ export class AccountLayoutComponent implements OnInit {
 
   constructor(public router: Router, private accountService: AccountService) {}
 
+  public get loggedInUser()
+  {
+    return this.accountService.loggedInUserInfo;
+  }
+
   ngOnInit() {}
 
   onToggleSideBar = () => {

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace EmployeeManagement.Web
+namespace EmployeeManagement.Api
 {
     public class Program
     {

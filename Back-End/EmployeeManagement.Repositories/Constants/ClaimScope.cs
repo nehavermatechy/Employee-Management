@@ -28,5 +28,7 @@ namespace EmployeeManagement.Repositories.Constants
         public const string Token = "token";
 
         public const string Address = "address";
+
+        public const string IsAgencyAdmin = "isAgencyAdmin";
     }
 }

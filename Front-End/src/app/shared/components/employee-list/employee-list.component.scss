@@ -1,4 +1,4 @@
-.product {
+.employee {
     width: 100%;
     display: flex;
     align-items: center;
@@ -9,17 +9,12 @@
 .description {
     flex: 1;
 }
-.category-name {
-    font-size: 12px;
-}
 .employee-name {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: normal;
 }
-.product-name, .price {
-    height: auto;
-    font-weight: bold;
-}
-.product {
+
+.employee {
     padding: 12px;
 }
+.employee-name{cursor: pointer;}

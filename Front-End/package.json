@@ -41,6 +41,7 @@
     "@progress/kendo-theme-material": "^3.21.0",
     "bootstrap": "^4.5.3",
     "jquery": "^3.5.1",
+    "ngx-spinner": "^10.0.1",
     "ngx-toastr": "^13.1.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",

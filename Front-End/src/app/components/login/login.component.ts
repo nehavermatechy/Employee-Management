@@ -15,7 +15,6 @@ import { BaseComponent, Page } from 'src/app/shared';
 })
 export class LoginComponent extends BaseComponent implements OnInit, OnDestroy {
   private unsubscribe$ = new Subject<void>();
-
   constructor(
     private formBuilder: FormBuilder,
     protected router: Router,
@@ -56,6 +55,11 @@ export class LoginComponent extends BaseComponent implements OnInit, OnDestroy {
           });
       });
     }
+  }
+
+  vas()
+  {
+    
   }
 
   ngOnDestroy(): void {

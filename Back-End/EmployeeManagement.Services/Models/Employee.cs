@@ -4,9 +4,13 @@ namespace EmployeeManagement.Services.Models
 {
     public class Employee
     {
+        public Employee()
+        {
+
+        }
         public Employee(int employeeId, string name, string designation, string email, int phoneNumber, string role, int supervisorId,  string password, string address)
         {
-            this.EmployeeId = employeeId;
+            this.Id = employeeId;
             this.Name = name;
             this.Designation = designation;
             this.Email = email;
@@ -17,7 +21,7 @@ namespace EmployeeManagement.Services.Models
             this.Address = address;
         }
 
-        public int EmployeeId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         
         public string Designation { get; set; }

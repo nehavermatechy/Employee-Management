@@ -174,14 +174,14 @@ color: #3354a8;
   text-align: center;
   letter-spacing: 1px;
   display: inline-block;
-  background: #F17C35;
-  background: linear-gradient(180deg, rgba(76,169,223,1) 0%, rgba(72,155,214,1) 0%, rgba(60,116,189,1) 0%, rgba(58,108,184,1) 20%, rgba(55,97,177,1) 34%, rgba(51,84,168,1) 45%, rgba(47,69,159,1) 66%, rgba(41,46,145,1) 100%);
   background-size: 150% 150%;
   transition: background-position 0.7s ease-in-out;
   -moz-transition: background-position 0.7s ease-in-out;
   -ms-transition: background-position 0.7s ease-in-out;
   -o-transition: background-position 0.7s ease-in-out;
   -webkit-transition: background-position 0.7s ease-in-out;
+  border-radius: 5px;   
+   background: #4a85b5;
 }
 
 .custom-control-label::before {
@@ -218,6 +218,8 @@ color: #3354a8;
     color:'white';
     border: 1px solid white;
 }
+
+
 
 /** MEDIA **/
 @media (max-width: 992px) {

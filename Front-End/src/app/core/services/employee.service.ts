@@ -11,8 +11,6 @@ export class EmployeeService {
   constructor(private http: HttpClient, private router: Router, private accountService: AccountService) {  }
   
   getEmployees = () => {
-    const {role, employeeId} = this.accountService.loggedInUserInfo;
-    const params = new HttpParams().set("role", role).set("employeeId", employeeId);
-    return this.http.get(`${apiEndPoint}${url.getEmployees}`,{params})
+    return this.http.get(`${apiEndPoint}${url.getEmployees}`)
   }
 }

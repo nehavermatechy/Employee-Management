@@ -1,4 +1,5 @@
 ﻿using EmployeeManagement.DAL.Abstract;
+using EmployeeManagement.Repositories.Extensions;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,6 +9,10 @@ namespace EmployeeManagement.DAL.Models
     [Table("Employees")]
     public class Employee : EmployeeManagementEntity
     {
+        public Employee()
+        {
+
+        }
         public Employee(int id, string name, string designation, string email, int phoneNumber, string role, int supervisorId, string password, string address)
         {
             this.Id = id;

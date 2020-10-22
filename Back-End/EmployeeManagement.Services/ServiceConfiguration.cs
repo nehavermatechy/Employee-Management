@@ -1,4 +1,6 @@
-﻿using EmployeeManagement.Services.Models;
+﻿using EmployeeManagement.Services.Interfaces;
+using EmployeeManagement.Services.Models;
+using EmployeeManagement.Services.Providers;
 using EmployeeManagement.Services.Services;
 using EmployeeManagement.Services.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -14,6 +16,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddDAL(options);
             services.AddScoped<IEmployeeService, EmployeeService>();
             services.AddScoped<ILoginService, LoginService>();
+            services.AddScoped<IAuthenticationProvider, AuthenticationProvider>();
             services.AddScoped<AppSettings>();
         }
     }

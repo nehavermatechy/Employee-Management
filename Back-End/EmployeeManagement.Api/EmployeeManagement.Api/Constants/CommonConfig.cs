@@ -2,11 +2,11 @@
 using EmployeeManagement.Services.Constants;
 using System.Collections.Generic;
 
-namespace EmployeeManagement.Web.Constants
+namespace EmployeeManagement.Api.Constants
 {
     public static class CommonConfig
     {
-       public const string GetAllEmployeeSp = "CREATE PROCEDURE GetAllEmployee AS BEGIN SELECT * FROM Employees END";
+       public const string GET_ALL_EMPLOYEES_SP = "CREATE PROCEDURE GetAllEmployee AS BEGIN SELECT [Id], [Name], [Designation], [Email], [PhoneNumber], [Role], [SupervisorId], [Address], [Password] FROM Employees END";
 
        public readonly static List<Employee> Employees = new List<Employee>
        {
@@ -27,31 +27,28 @@ namespace EmployeeManagement.Web.Constants
          new Employee(14,"John Baptise", "Senior Software Developer", "john2@mailinator.com", 343242325, RoleConfig.Employee, 2, "john1@123", "Los Angeles, CA"),
          new Employee(15,"Samuel Miller", "Junior Software Developer", "samuel@mailinator.com", 343242353, RoleConfig.Employee, 2, "samuel@123", "Los Angeles, CA"),
          new Employee(16,"Steffen Rex", "Senior Software Tester", "steffen@mailinator.com", 343242383, RoleConfig.Employee, 2, "steffen@123", "Los Angeles, CA"),
-         new Employee(17,"Henry Miller", "Junior Software Developer", "henry@mailinator.com", 343242393, RoleConfig.Employee, 2, "henry@123", "Los Angeles, CA"),
+         new Employee(17,"Henrylle Miller", "Junior Software Developer", "henry@mailinator.com", 343242393, RoleConfig.Employee, 2, "henry@123", "Los Angeles, CA"),
          new Employee(18,"Milton Desouza", "Senior Software Developer", "milton@mailinator.com", 343242343, RoleConfig.Employee, 2, "milton@123", "Los Angeles, CA"),
          new Employee(19,"Mark Henry", "Junior Software Tester", "mark@mailinator.com", 343242363, RoleConfig.Employee, 2, "mark@123", "Los Angeles, CA"),
-         new Employee(20,"Henry Enqiq", "Junior Software Developer", "henry3@mailinator.com", 343242433, RoleConfig.Employee, 2, "henry@123", "Los Angeles, CA"),
+         new Employee(20,"Henryne Enqiq", "Junior Software Developer", "henry3@mailinator.com", 343242433, RoleConfig.Employee, 2, "henry@123", "Los Angeles, CA"),
          new Employee(21,"Megan Desouza", "Junior Software Tester", "megan@mailinator.com", 343262333, RoleConfig.Employee, 2, "megan@123", "Los Angeles, CA"),
          new Employee(22,"Carl Johnson", "Junior Software Developer", "carl@mailinator.com", 343342333, RoleConfig.Employee, 2, "carl@123", "Los Angeles, CA"),
                       
-         new Employee(23,"Dan Watson", "Senior Software Tester", "dan1@mailinator.com", 343242321, RoleConfig.Employee, 3, "dan3@123", "Los Angeles, CA"),
+         new Employee(23,"Daniel Watson", "Senior Software Tester", "dan1@mailinator.com", 343242321, RoleConfig.Employee, 3, "dan3@123", "Los Angeles, CA"),
          new Employee(24,"Tom Hillry", "Junior Software Developer", "tom1@mailinator.com", 343242331, RoleConfig.Employee, 3, "tom3@123", "Los Angeles, CA"),
          new Employee(25,"John Baptise", "Senior Software Developer", "john1@mailinator.com", 343242325, RoleConfig.Employee, 3, "john3@123", "Los Angeles, CA"),
          new Employee(26,"Samuel Miller", "Junior Software Developer", "samuel1@mailinator.com", 343242353, RoleConfig.Employee, 3, "samuel3@123", "Los Angeles, CA"),
          new Employee(27,"Steffen Rex", "Senior Software Tester", "steffen1@mailinator.com", 343242383, RoleConfig.Employee, 3, "steffen3@123", "Los Angeles, CA"),
          new Employee(28,"Henry Miller", "Junior Software Developer", "henry1@mailinator.com", 343242393, RoleConfig.Employee, 3, "henry3@123", "Los Angeles, CA"),
-         new Employee(29,"Milton Desouza", "Senior Software Developer", "milton1@mailinator.com", 343242343, RoleConfig.Employee, 3, "milton3@123", "Los Angeles, CA"),
-         new Employee(30,"Mark Henry", "Junior Software Tester", "mark1@mailinator.com", 343242363, RoleConfig.Employee, 3, "mark3@123", "Los Angeles, CA"),
-         new Employee(31,"Henry Enqiq", "Junior Software Developer", "henry4@mailinator.com", 343242433, RoleConfig.Employee, 3, "henry3@123", "Los Angeles, CA"),
-         new Employee(32,"Megan Desouza", "Junior Software Tester", "megan1@mailinator.com", 343262333, RoleConfig.Employee, 3, "megan3@123", "Los Angeles, CA"),
-         new Employee(33,"Carl Johnson", "Junior Software Developer", "carl1@mailinator.com", 343342333, RoleConfig.Employee, 3, "carl3@123", "Los Angeles, CA"),
+         new Employee(29,"Dannie Desouza", "Senior Software Developer", "milton1@mailinator.com", 343242343, RoleConfig.Employee, 3, "milton3@123", "Los Angeles, CA"),
+
                      
-         new Employee(34,"Dan Watson", "Senior Software Tester", "dan2@mailinator.com", 343242321, RoleConfig.Employee, 4, "dan4@123", "Los Angeles, CA"),
-         new Employee(35,"Tom Hillry", "Junior Software Developer", "tom2@mailinator.com", 343242331, RoleConfig.Employee, 4, "tom4@123", "Los Angeles, CA"),
+         new Employee(34,"Dany Watson", "Senior Software Tester", "dan2@mailinator.com", 343242321, RoleConfig.Employee, 4, "dan4@123", "Los Angeles, CA"),
+         new Employee(35,"Tomy Hillry", "Junior Software Developer", "tom2@mailinator.com", 343242331, RoleConfig.Employee, 4, "tom4@123", "Los Angeles, CA"),
                       
-         new Employee(36,"Henry Enqiq", "Junior Software Developer", "henry2@mailinator.com", 343242433, RoleConfig.Employee, 4, "henry4@123", "Los Angeles, CA"),
-         new Employee(37,"Megan Desouza", "Junior Software Tester", "megan2@mailinator.com", 343262333, RoleConfig.Employee, 4, "megan4@123", "Los Angeles, CA"),
-         new Employee(38,"Carl Johnson", "Junior Software Developer", "carl2@mailinator.com", 343342333, RoleConfig.Employee, 4, "carl4@123", "Los Angeles, CA"),
+         new Employee(36,"Henrylap Enqiq", "Junior Software Developer", "henry2@mailinator.com", 343242433, RoleConfig.Employee, 4, "henry4@123", "Los Angeles, CA"),
+         new Employee(37,"Meganaca Desouza", "Junior Software Tester", "megan2@mailinator.com", 343262333, RoleConfig.Employee, 4, "megan4@123", "Los Angeles, CA"),
+         new Employee(38,"Carie Johnson", "Junior Software Developer", "carl2@mailinator.com", 343342333, RoleConfig.Employee, 4, "carl4@123", "Los Angeles, CA"),
 
        };
     }

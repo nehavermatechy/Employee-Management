@@ -9,7 +9,7 @@ export class EmployeeListComponent implements OnInit {
 
   @Input() public employee: {
     name: string,
-    employeeId: string
+    id: string
 };
 
 @Output() onClickList = new EventEmitter();
@@ -19,7 +19,7 @@ export class EmployeeListComponent implements OnInit {
   }
 
   onClick = () =>{
-    this.onClickList.emit(this.employee.employeeId);
+    this.onClickList.emit(this.employee.id);
   }
 
   

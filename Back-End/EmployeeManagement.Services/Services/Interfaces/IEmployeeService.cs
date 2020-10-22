@@ -9,6 +9,6 @@ namespace EmployeeManagement.Services.Services.Interfaces
 
         string Authenticate(string email, string password);
 
-        List<Employee> GetRoleSpecificEmployees(string role, string employeeId);
+        List<Employee> GetRoleSpecificEmployees();
     }
 }

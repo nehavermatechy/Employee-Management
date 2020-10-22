@@ -1,9 +1,11 @@
 ﻿using System;
+using EmployeeManagement.Services.Interfaces;
 using EmployeeManagement.Services.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EmployeeManagement.Web.Controllers
+namespace EmployeeManagement.Api.Controllers
 {
     [Authorize]
     [ApiController]
@@ -13,7 +15,7 @@ namespace EmployeeManagement.Web.Controllers
         private readonly IEmployeeService _employeeService;
         private readonly ILoginService _loginService;
 
-        public EmployeeController(IEmployeeService employeeService, ILoginService _loginService)
+        public EmployeeController(IEmployeeService employeeService, ILoginService _loginService, IHttpContextAccessor contextAccessor)
         {
             this._employeeService = employeeService;
             this._loginService = _loginService;
@@ -38,17 +40,17 @@ namespace EmployeeManagement.Web.Controllers
             }
             catch(Exception ex)
             {
-              return this.Ok();
+              return this.Problem(ex.Message);
             }
         }
 
         [HttpGet]
         [Route("GetEmployees")]
-        public IActionResult GetEmployees(string role, string employeeId)
+        public IActionResult GetEmployees()
         {
             try
             {
-                var employees = this._employeeService.GetRoleSpecificEmployees(role, employeeId);
+                var employees = this._employeeService.GetRoleSpecificEmployees();
                 return this.Ok(employees);
             }
             catch (Exception ex)

@@ -1,6 +1,7 @@
 ﻿using EmployeeManagement.Repositories.Constants;
 using EmployeeManagement.Repositories.Repositories.Interfaces;
 using EmployeeManagement.Services.Constants;
+using EmployeeManagement.Services.Interfaces;
 using EmployeeManagement.Services.Models;
 using EmployeeManagement.Services.Services.Interfaces;
 using Microsoft.Extensions.Options;
@@ -9,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Reflection;
 using System.Security.Claims;
 using System.Text;
 
@@ -18,10 +20,12 @@ namespace EmployeeManagement.Services.Services
     {
         private readonly AppSettings _appSettings;
         private readonly IEmployeeRepository _employeeRepository;
-        public EmployeeService(IEmployeeRepository employeeRepository, IOptions<AppSettings> appSettings)
+        private readonly IAuthenticationProvider _authenticationProvider;
+        public EmployeeService(IEmployeeRepository employeeRepository, IOptions<AppSettings> appSettings, IAuthenticationProvider authenticationProvider)
         {
             this._employeeRepository = employeeRepository;
             this._appSettings = appSettings.Value;
+            this._authenticationProvider = authenticationProvider;
         }
         public List<Employee> GetEmployees()
         {
@@ -37,13 +41,13 @@ namespace EmployeeManagement.Services.Services
                      x.Address)).ToList();
         }
 
-        public List<Employee> GetRoleSpecificEmployees(string role, string employeeId)
+        public List<Employee> GetRoleSpecificEmployees()
         {
-            if(role == RoleConfig.Admin)
+            if(this._authenticationProvider.IsAgencyAdmin)
             {
                 return GetEmployees();
             }
-                return GetSupervisorSpecificEmployees(employeeId);
+                return GetSupervisorSpecificEmployees(this._authenticationProvider.EmployeeId);
         }
 
         private List<Employee> GetSupervisorSpecificEmployees(string employeeId)
@@ -57,21 +61,20 @@ namespace EmployeeManagement.Services.Services
 
             if (employee == null)
                 return null;
-
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(this._appSettings.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimScope.EmployeeId, employee.EmployeeId.ToString()),
+                    new Claim(ClaimScope.EmployeeId, employee.Id.ToString()),
                     new Claim(ClaimScope.Name, employee.Name),
                     new Claim(ClaimScope.Designation, employee.Designation),
                     new Claim(ClaimScope.Email, employee.Email),
                     new Claim(ClaimScope.PhoneNumber, employee.PhoneNumber.ToString()),
-                    new Claim(ClaimScope.Role, employee.Role),
+                    new Claim(ClaimTypes.Role, employee.Role),
                     new Claim(ClaimScope.SupervisorId, employee.SupervisorId.ToString()),
-                    new Claim(ClaimScope.Address, employee.Address.ToString())
+                    new Claim(ClaimScope.Address, employee.Address.ToString()),
                 }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
@@ -79,6 +82,5 @@ namespace EmployeeManagement.Services.Services
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
         }
-
     }
 }

@@ -7,6 +7,7 @@ import { DialogsModule } from '@progress/kendo-angular-dialog';
 import { ListViewModule } from '@progress/kendo-angular-listview';
 import { InputsModule } from '@progress/kendo-angular-inputs';
 import { ToastrModule } from 'ngx-toastr';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 import {
   BaseComponent,
@@ -25,9 +26,10 @@ import {
     ListViewModule,
     InputsModule,
     ToastrModule.forRoot({
-      progressBar:true,
-      positionClass:'toast-bottom-right'
-    })
+      progressBar: true,
+      positionClass: 'toast-bottom-right',
+    }),
+    NgxSpinnerModule,
   ],
 
   exports: [
@@ -39,11 +41,13 @@ import {
     ListViewModule,
     InputsModule,
     ToastrModule,
+    NgxSpinnerModule,
 
     BaseComponent,
     FieldErrorComponent,
     EmployeeListComponent,
   ],
   declarations: [BaseComponent, FieldErrorComponent, EmployeeListComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class SharedModule {}

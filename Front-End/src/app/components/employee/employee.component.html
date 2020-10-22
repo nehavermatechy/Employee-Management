@@ -1,13 +1,6 @@
-<div class="app-page-header">
-  <h3 class="mb-0 mr-3 font-weight-semibold">Employees</h3>
-  <div class="ant-breadcrumb">
-    <span>
-      <span class="ant-breadcrumb-link"> <a routerLink="/dashboard">Home</a></span
-      ><span class="ant-breadcrumb-separator">/</span></span
-    ><span ><span class="ant-breadcrumb-link" >
-        <a routerLink="/employee">Employees</a></span ></span > 
-  </div>
-</div> 
+
+
+
 
 
 
@@ -16,6 +9,12 @@
   <div class="row">
     <div class="col-4"><strong>Name:</strong></div>
     <div class="col-8 ">{{ selectedEmployee.name }}</div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-4"><strong>Email:</strong></div>
+    <div class="col-8">{{ selectedEmployee.email }}</div>
 
   </div>
 
@@ -37,38 +36,57 @@
     </div>
     
 </kendo-dialog> 
+<div class="container mt-5 pt-3">
+  <div class="app-page-header">
+    <h3 class="mb-0 mr-3 font-weight-semibold">Employees</h3>
+    <div class="ant-breadcrumb">
+      <span>
+        <span class="ant-breadcrumb-link"> <a routerLink="/dashboard">Home</a></span
+        ><span class="ant-breadcrumb-separator">/</span></span
+      ><span ><span class="ant-breadcrumb-link" >
+          <a routerLink="/employee">Employees</a></span ></span > 
+    </div>
+  </div> 
+<div class="row">
+  <div class="col-md-12">
 
-
-<kendo-listview
-            [data]="employees"
-            [containerClass]="'k-d-flex k-flex-col k-flex-nowrap'"
-        >
-            <ng-template kendoListViewHeaderTemplate>
-                <div class="header">
-                    <div class="title">
-                        
-                    </div>
-                    <kendo-textbox
-                        placeholder="Filter items..."
-                        ngModel
-                        (ngModelChange)="handleFilterChange($event)"
-                        [showSuccessIcon]="false"
-                    >
-                        <ng-template kendoTextBoxSuffixTemplate>
-                            <span class="k-icon k-i-search"></span>
-                        </ng-template>
-                    </kendo-textbox>
-                </div>
-            </ng-template>
-            <ng-template
-                kendoListViewItemTemplate
-                let-dataItem="dataItem"
+    <kendo-listview
+    [kendoListViewBinding]="employees"
+    [pageable]="pagerSettings"
+    [pageSize]="pageSize"
+    [containerClass]="'k-d-flex k-flex-col k-flex-nowrap'"
+   
+>
+    <ng-template kendoListViewHeaderTemplate>
+        <div class="header">
+            <div class="title">
+                
+            </div>
+            <kendo-textbox
+                placeholder="Search Employees..."
+                ngModel
+                (ngModelChange)="handleFilterChange($event)"
+                [showSuccessIcon]="false"
             >
-               <app-employee-list
-               (onClickList) ="openEmployeeDetailModalPopup($event)"
-               class="product"
-                    [employee]="dataItem">
-                 
-               </app-employee-list>
-            </ng-template>
-        </kendo-listview>
+                <ng-template kendoTextBoxSuffixTemplate>
+                    <span class="k-icon k-i-search"></span>
+                </ng-template>
+            </kendo-textbox>
+        </div>
+    </ng-template>
+    <ng-template
+        kendoListViewItemTemplate
+        let-dataItem="dataItem"
+    >
+    <ngx-spinner [fullScreen]="false" type="ball-clip-rotate-multiple" size = "medium" bdColor = "rgba(0,0,0,0)" color="#00ACC1"></ngx-spinner>
+       <app-employee-list
+       (onClickList) ="openEmployeeDetailModalPopup($event)"
+       class="product"
+            [employee]="dataItem">
+         
+       </app-employee-list>
+    </ng-template>
+</kendo-listview>
+  </div>
+</div>
+</div>

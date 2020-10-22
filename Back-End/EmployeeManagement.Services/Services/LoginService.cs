@@ -1,4 +1,5 @@
 ﻿using EmployeeManagement.Repositories.Constants;
+using EmployeeManagement.Repositories.Extensions;
 using EmployeeManagement.Repositories.Repositories.Interfaces;
 using EmployeeManagement.Services.Models;
 using EmployeeManagement.Services.Services.Interfaces;
@@ -10,6 +11,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
+using EmployeeData = EmployeeManagement.DAL.Models.Employee;
 
 
 namespace EmployeeManagement.Services.Services
@@ -25,20 +27,12 @@ namespace EmployeeManagement.Services.Services
         }
         public string Authenticate(string email, string password)
         {
-               var employeeData = this._employeeRepository.GetEmployees().AsEnumerable().SingleOrDefault(x => x.Email == email && x.Password == password);
+            EmployeeData employeeData = this._employeeRepository.GetEmployees().AsEnumerable().SingleOrDefault(x => x.Email == email && x.Password == password);
             
             if (employeeData == null)
                 return null;
 
-            Employee employee = new Employee(employeeData.Id,
-                     employeeData.Name,
-                     employeeData.Designation,
-                     employeeData.Email,
-                     employeeData.PhoneNumber,
-                     employeeData.Role,
-                     employeeData.SupervisorId,
-                     employeeData.Password,
-                     employeeData.Address);
+            Employee employee = employeeData.Cast<Employee>();
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(this._appSettings.Secret);
@@ -46,7 +40,7 @@ namespace EmployeeManagement.Services.Services
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimScope.EmployeeId, employee.EmployeeId.ToString()),
+                    new Claim(ClaimScope.EmployeeId, employee.Id.ToString()),
                     new Claim(ClaimScope.Name, employee.Name),
                     new Claim(ClaimScope.Designation, employee.Designation),
                     new Claim(ClaimScope.Email, employee.Email),
